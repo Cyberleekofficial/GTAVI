@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBERLEEK — DEFINITIVE BUILD (2.0)</title>
+    <title>CYBERLEEK — THE FINAL DEAL</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
@@ -16,6 +16,7 @@
             --purple-glow: #b97cff;
             --green: #00ff9d;
             --red: #ff2a2a;
+            --yellow: #fbbf24;
             --text: #ffffff;
             --text-muted: #8b829c;
             --font-main: 'Inter', sans-serif;
@@ -39,7 +40,7 @@
             position: fixed;
             inset: 0;
             z-index: -1;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' basefrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
             pointer-events: none;
         }
 
@@ -68,6 +69,7 @@
         .text-purple { color: var(--purple-glow); }
         .text-green { color: var(--green); }
         .text-red { color: var(--red); }
+        .text-yellow { color: var(--yellow); }
         .flex-center { display: flex; align-items: center; justify-content: center; }
         .gap-20 { gap: 20px; }
 
@@ -248,22 +250,30 @@
             display: block;
         }
 
-        /* LOGS */
-        .log-box {
-            background: #000;
-            border: 1px solid var(--border);
+        /* DEAL BANNER */
+        .deal-banner {
+            background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent);
+            border: 1px solid var(--yellow);
             padding: 20px;
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .log-line { margin-bottom: 5px; display: block; }
-        .log-line span { color: var(--purple-glow); }
-        .log-line .val { color: var(--green); }
+        .deal-content h3 { color: var(--yellow); margin-bottom: 5px; }
+        .deal-content p { font-size: 14px; color: var(--text-muted); }
+
+        .deal-timer {
+            font-family: var(--font-mono);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--red);
+            text-shadow: 0 0 10px rgba(255, 42, 42, 0.5);
+        }
 
         /* PRICING */
         .pricing-grid {
@@ -343,6 +353,23 @@
             font-weight: bold;
         }
 
+        /* LOGS */
+        .log-box {
+            background: #000;
+            border: 1px solid var(--border);
+            padding: 20px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .log-line { margin-bottom: 5px; display: block; }
+        .log-line span { color: var(--purple-glow); }
+        .log-line .val { color: var(--green); }
+
         /* MEDIA */
         .media-grid {
             display: grid;
@@ -376,6 +403,33 @@
             font-size: 12px;
             font-family: var(--font-mono);
             color: var(--text-muted);
+        }
+
+        /* ROCKSTAR INFO */
+        .rockstar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .rockstar-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 6px;
+        }
+
+        .rockstar-card h4 {
+            color: var(--purple-glow);
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .rockstar-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
         }
 
         /* LAUNCHER */
@@ -497,19 +551,38 @@
         }
         .notif-text strong { color: var(--text); display: block; margin-bottom: 2px; }
 
-        /* LIVE COUNTER */
-        .live-counter {
-            text-align: center;
-            margin-bottom: 50px;
-            font-family: var(--font-mono);
+        /* LIVE FEED SIDEBAR */
+        .live-feed-container {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            background: linear-gradient(180deg, transparent, rgba(139,44,255,0.02));
         }
-        .counter-display {
-            font-size: 48px;
-            font-weight: 900;
-            color: var(--red);
-            text-shadow: 0 0 20px rgba(255, 42, 42, 0.4);
+
+        .feed-list {
+            list-style: none;
+            max-height: 300px;
+            overflow: hidden;
+            position: relative;
         }
-        .counter-label { font-size: 14px; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+
+        .feed-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 13px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .feed-user { display: flex; align-items: center; gap: 8px; }
+        .feed-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+        .feed-time { color: var(--text-muted); font-size: 11px; font-family: var(--font-mono); }
 
         /* FOOTER */
         footer {
@@ -548,7 +621,7 @@
         <nav class="nav-links">
             <a href="#logs">THE LOGS</a>
             <a href="#media">MEDIA</a>
-            <a href="#launcher">LAUNCHER</a>
+            <a href="#rockstar">THE LEAK</a>
             <a href="#pricing" style="color: var(--purple-glow);">GET ACCESS</a>
         </nav>
     </div>
@@ -572,6 +645,19 @@
         <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
             <a href="#pricing" class="btn">SECURE YOUR COPY</a>
             <a href="#media" class="btn btn-outline">VIEW RAW CAPTURES</a>
+        </div>
+    </div>
+</section>
+
+<!-- DEAL BANNER -->
+<section class="section" style="padding: 40px 0; border-bottom: 1px solid var(--yellow);">
+    <div class="container">
+        <div class="deal-banner">
+            <div class="deal-content">
+                <h3>ROCKSTAR DEAL CONFIRMED: $1,000,000 USD</h3>
+                <p>Rockstar has paid the ransom. This build is guaranteed authentic. Once the timer hits zero, the servers go dark forever.</p>
+            </div>
+            <div class="deal-timer" id="countdown">23:59:45</div>
         </div>
     </div>
 </section>
@@ -608,12 +694,41 @@
     </div>
 </section>
 
+<!-- ROCKSTAR INFO -->
+<section id="rockstar" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">ROCKSTAR DATA EXTRACTED</h2>
+            <div class="mono" style="color: var(--text-muted); font-size: 12px;">SOURCE: INTERNAL_SERVER_04</div>
+        </div>
+
+        <div class="rockstar-grid">
+            <div class="rockstar-card">
+                <h4>Map Assets</h4>
+                <p>Complete 1:10 scale map of Vice City. Includes underground tunnels, untextured zones, and unused islands.</p>
+            </div>
+            <div class="rockstar-card">
+                <h4>Script Files</h4>
+                <p>Raw C# scripts for all mission logic, traffic AI, and pedestrian behavior trees.</p>
+            </div>
+            <div class="rockstar-card">
+                <h4>Character Models</h4>
+                <p>High-poly models for all main characters, including "J" and "Lucia". Includes facial rig data.</p>
+            </div>
+            <div class="rockstar-card">
+                <h4>Audio Logs</h4>
+                <p>Unused voice lines, background radio stations, and the full score soundtrack.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- PRICING -->
 <section id="pricing" class="section">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">SELECT ACCESS LEVEL</h2>
-            <div class="mono" style="color: var(--text-muted); font-size: 12px;">ACCEPTED: BTC / ETH / LTC</div>
+            <div class="mono" style="color: var(--text-muted); font-size: 12px;">ACCEPTED: BTC / ETH / LTC / CYBERLEEK COIN</div>
         </div>
 
         <div class="pricing-grid">
@@ -673,7 +788,6 @@
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">RAW CAPTURES</h2>
-            <div class="mono" style="color: var(--text-muted); font-size: 12px;">SOURCE: INTERNAL_SERVER_04</div>
         </div>
         
         <div class="media-grid">
@@ -738,6 +852,18 @@
     </div>
 </section>
 
+<!-- LIVE FEED -->
+<section class="live-feed-container">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">LIVE PURCHASES</h2>
+        </div>
+        <div class="feed-list" id="feedList">
+            <!-- Items will be injected here -->
+        </div>
+    </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
     <div class="container">
@@ -745,6 +871,9 @@
         <p style="margin-top: 10px; font-family: var(--font-mono); color: var(--purple);">
             NODE_ID: 8849-X // LATENCY: 12ms // COIN: CYBERLEEK
         </p>
+        <div style="margin-top: 20px; opacity: 0.6;">
+            Powered by <a href="https://notrack.ai" style="color: var(--text); text-decoration: none;">notrack.ai</a> 
+        </div>
     </div>
 </footer>
 
@@ -876,6 +1005,58 @@
             showPopup();
         }
     }, 15000); // Random popup every ~15-30 seconds
+
+    // COUNTDOWN TIMER
+    let timeLeft = 23 * 60 * 60 + 59 * 60 + 45; // 23h 59m 45s
+    const countdownEl = document.getElementById('countdown');
+
+    setInterval(() => {
+        timeLeft--;
+        if (timeLeft < 0) timeLeft = 0;
+        
+        const hours = Math.floor(timeLeft / 3600);
+        const minutes = Math.floor((timeLeft % 3600) / 60);
+        const seconds = timeLeft % 60;
+
+        countdownEl.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }, 1000);
+
+    // LIVE FEED LOGIC
+    const feedList = document.getElementById('feedList');
+    const feedNames = ["User123", "LeakerX", "CryptoKing", "GTA_Fan", "Hacker404", "Anonymous", "Neo", "CyberPunk"];
+    const feedPackages = ["Raw Leak", "Full Build", "Developer Access"];
+
+    function addFeedItem() {
+        const randomName = feedNames[Math.floor(Math.random() * feedNames.length)];
+        const randomPackage = feedPackages[Math.floor(Math.random() * feedPackages.length)];
+        const now = new Date();
+        const timeString = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0') + ':' + now.getSeconds().toString().padStart(2, '0');
+
+        const item = document.createElement('li');
+        item.className = 'feed-item';
+        item.innerHTML = `
+            <div class="feed-user">
+                <div class="feed-dot"></div>
+                <span>${randomName} bought <strong>${randomPackage}</strong></span>
+            </div>
+            <div class="feed-time">${timeString}</div>
+        `;
+
+        feedList.prepend(item);
+
+        if (feedList.children.length > 10) {
+            feedList.removeChild(feedList.lastElementChild);
+        }
+    }
+
+    // Initial items
+    for(let i=0; i<5; i++) addFeedItem();
+
+    // Add new item every 5-10 seconds
+    setInterval(() => {
+        addFeedItem();
+    }, 7000);
+
 </script>
 
 </body>
