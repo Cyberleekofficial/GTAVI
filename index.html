@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBERLEEK — GTA VI: FINAL BUILD</title>
+    <title>CYBERLEEK — GTA VI BUILD LEAK</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
@@ -73,6 +73,7 @@
         .text-yellow { color: var(--yellow); }
         .flex-center { display: flex; align-items: center; justify-content: center; }
         .gap-20 { gap: 20px; }
+        .text-center { text-align: center; }
 
         /* HEADER */
         header {
@@ -204,7 +205,7 @@
             transform: translateY(-2px);
         }
 
-        /* DEAL BANNER (UPDATED) */
+        /* DEAL BANNER */
         .deal-banner {
             background: linear-gradient(90deg, rgba(255, 42, 42, 0.1), transparent);
             border: 1px solid var(--red);
@@ -256,6 +257,46 @@
             height: 30px;
             background: var(--purple);
             display: block;
+        }
+
+        /* HACKER PROFILE */
+        .hacker-profile {
+            background: var(--bg-card);
+            border: 1px solid var(--purple);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 60px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .hacker-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 0 20px var(--purple);
+        }
+
+        .hacker-info h3 { margin-bottom: 10px; color: var(--text); }
+        .hacker-info p { color: var(--text-muted); font-size: 14px; margin-bottom: 15px; }
+        .hacker-badge {
+            display: inline-block;
+            background: rgba(0, 255, 157, 0.1);
+            color: var(--green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            border: 1px solid var(--green);
         }
 
         /* BANNED INFO */
@@ -319,6 +360,19 @@
             letter-spacing: 1px;
             border-radius: 20px;
             box-shadow: 0 0 10px var(--purple);
+        }
+
+        .solana-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(140, 0, 255, 0.2);
+            color: var(--purple-glow);
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 4px;
+            border: 1px solid var(--purple);
         }
 
         .price-tag {
@@ -635,14 +689,14 @@
     <div class="container">
         <div class="alert-bar">
             <span style="width: 8px; height: 8px; background: var(--red); border-radius: 50%;"></span>
-            DEADLINE: 24 HOURS TO PAY $1M
+            I AM THE HACKER
         </div>
         
         <h1>DEFINITIVE <br><span class="text-purple">GTA VI BUILD</span></h1>
         <p>
-            We bypassed the firewall. SQL Injection executed at 03:00 UTC. 
-            Rockstar has 24 hours to pay $1,000,000 to keep this build online. 
-            Once the timer hits zero, the servers go dark forever.
+            I bypassed the firewall. I stole the source code. I am the one who leaked GTA VI. 
+            I'm selling the definitive build directly from my servers. 
+            <strong>When you buy, you're buying from the source.</strong>
         </p>
         
         <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
@@ -652,20 +706,20 @@
     </div>
 </section>
 
-<!-- DEAL BANNER (UPDATED) -->
+<!-- DEAL BANNER -->
 <section class="section" style="padding: 40px 0; border-bottom: 1px solid var(--red);">
     <div class="container">
         <div class="deal-banner">
             <div class="deal-content">
-                <h3>ROCKSTAR DEAL CONFIRMED: $1,000,000 USD</h3>
-                <p>Rockstar has <strong>24 hours</strong> to pay the ransom. If the timer hits zero, this site goes offline and the servers are wiped. This is your only warning.</p>
+                <h3>ROCKSTAR HAS 24H TO PAY $1M</h3>
+                <p>If they don't pay, the site stays open and I release <strong>more builds and source code</strong>.</p>
             </div>
             <div class="deal-timer" id="countdown">23:59:45</div>
         </div>
     </div>
 </section>
 
-<!-- LIVE SALES COUNTER (UPDATED TO 20K) -->
+<!-- LIVE SALES COUNTER -->
 <section style="padding: 40px 0; border-bottom: 1px solid var(--border);">
     <div class="container">
         <div class="live-counter">
@@ -676,8 +730,22 @@
     </div>
 </section>
 
-<!-- BANNED INFO (NEW) -->
-<section class="section" style="padding-top: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--border);">
+<!-- HACKER PROFILE (NEW) -->
+<section class="section">
+    <div class="container">
+        <div class="hacker-profile">
+            <div class="hacker-avatar">CL</div>
+            <div class="hacker-info">
+                <h3>Cyberleek</h3>
+                <p>I'm the one who stole the GTA VI build. I've been working on this for months. I'm selling these leaks directly to you because I want to remain anonymous. I don't want a name on a press release. I just want to see people play the game.</p>
+                <div class="hacker-badge">VERIFIED LEAKER</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BANNED INFO -->
+<section class="section" style="padding-top: 0; border-top: none;">
     <div class="container">
         <div class="banned-info">
             <div class="banned-icon">⚠️</div>
@@ -696,7 +764,7 @@
 <section id="hack" class="section">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">GTA VI HACK DEEP DIVE</h2>
+            <h2 class="section-title">WHAT I STOLE</h2>
             <div class="mono text-purple">SOURCE: ROCKSTAR_PRIVATE_CLOUD</div>
         </div>
 
@@ -729,17 +797,17 @@
     </div>
 </section>
 
-<!-- WHAT WE'VE DONE SECTION (NEW) -->
+<!-- WHAT WE'VE DONE SECTION -->
 <section id="what-we-done" class="section">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">WHAT WE'VE DONE SO FAR</h2>
+            <h2 class="section-title">WHAT I'VE RELEASED SO FAR</h2>
         </div>
 
         <div style="max-width: 900px; margin: 0 auto;">
             <p style="margin-bottom: 20px; color: var(--text-muted);">
-                Over the past few days, we’ve pushed the GTA VI leak further than anyone expected. 
-                Here’s what we’ve released and documented so far:
+                Over the past few days, I've pushed the leak further than anyone expected. 
+                Here's what I've documented so far:
             </p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px;">
@@ -778,15 +846,15 @@
             </div>
 
             <p style="color: var(--text); font-weight: 600; margin-bottom: 10px;">
-                We’ve also documented what we believe to be older development material and compared it with the latest footage to determine what has changed.
+                I've also documented what I believe to be older development material and compared it with the latest footage to determine what has changed.
             </p>
             <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 30px;">
-                This is only what we’ve chosen to show publicly. There is still significantly more information that has not been published.
+                This is only what I've chosen to show publicly. There is still significantly more information that has not been published.
             </p>
 
             <div style="background: rgba(139,44,255,0.1); border: 1px solid var(--purple); padding: 20px; border-radius: 6px;">
                 <p style="color: var(--text); font-weight: 700;">
-                    We’re currently organizing everything on the new site so that the latest material, timeline, research and updates can be found in one place.
+                    I'm currently organizing everything on the new site so that the latest material, timeline, research and updates can be found in one place.
                 </p>
                 <p style="color: var(--text-muted); margin-top: 15px;">
                     This story isn't over.<br>
@@ -847,6 +915,7 @@
             <!-- 2. GAME ($100) -->
             <div class="pricing-card popular">
                 <div class="badge-popular">DEFINITIVE EDITION</div>
+                <div class="solana-badge">-25% WITH SOLANA</div>
                 <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--purple-glow); margin-bottom: 10px;">PACKAGE 02</div>
                 <h3>Full Build + Leaks</h3>
                 <div class="price-tag">$100 <span>USD</span></div>
@@ -980,12 +1049,21 @@
         <h2>Checkout</h2>
         
         <div id="step1">
-            <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 14px;">Send exactly <span id="modalPrice" class="text-purple mono"></span> to the address below:</p>
+            <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 14px;">
+                <strong>Why Crypto?</strong> Because I want to remain anonymous. No names, no credit cards.
+            </p>
+            <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 14px;">
+                Send exactly <span id="modalPrice" class="text-purple mono"></span> to the address below:
+            </p>
             
             <div class="wallet-box">
-                bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh
+                bc1p4j273p5gl4c6c2vq266m4dmn4l9ge5re9trxw8utm6a6vvy8ek9s2vqndm
             </div>
-            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 20px;">Network: BTC | Time remaining: 15:00</p>
+            
+            <div style="background: rgba(140, 0, 255, 0.1); border: 1px solid var(--purple-glow); padding: 10px; border-radius: 4px; margin-bottom: 20px; font-size: 12px; text-align: center; color: var(--purple-glow);">
+                <strong>ALREADY INJECTED WITH SOL?</strong><br>
+                Pay via Solana (SOL) and get a <strong>25% discount</strong> automatically.
+            </div>
 
             <div class="input-group">
                 <label>YOUR EMAIL (FOR DOWNLOAD LINK)</label>
@@ -998,7 +1076,9 @@
         <div id="step2" style="display: none; text-align: center;">
             <div style="font-size: 40px; margin-bottom: 15px;">✓</div>
             <h3>Payment Verified!</h3>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">The download link has been sent to <span id="emailDisplay" class="text-purple"></span>.</p>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">
+                A 10-minute control check has passed. The download link has been sent to <span id="emailDisplay" class="text-purple"></span>.
+            </p>
             <button class="btn" onclick="closeModal()">CLOSE</button>
         </div>
     </div>
