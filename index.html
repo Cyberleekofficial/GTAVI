@@ -102,25 +102,6 @@
 
         .logo span { color: var(--purple-glow); }
 
-        .coin-badge {
-            background: rgba(0,0,0,0.6);
-            border: 1px solid var(--border);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-family: var(--font-mono);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-muted);
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        
-        .coin-badge:hover { border-color: var(--purple); color: var(--text); }
-        .coin-badge img { width: 14px; height: 14px; border-radius: 50%; }
-        .coin-badge strong { color: var(--text); font-weight: 600; }
-
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
@@ -223,10 +204,10 @@
             transform: translateY(-2px);
         }
 
-        /* DEAL BANNER */
+        /* DEAL BANNER (UPDATED) */
         .deal-banner {
-            background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent);
-            border: 1px solid var(--yellow);
+            background: linear-gradient(90deg, rgba(255, 42, 42, 0.1), transparent);
+            border: 1px solid var(--red);
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 60px;
@@ -237,7 +218,7 @@
             gap: 20px;
         }
 
-        .deal-content h3 { color: var(--yellow); margin-bottom: 5px; }
+        .deal-content h3 { color: var(--red); margin-bottom: 5px; font-size: 18px; }
         .deal-content p { font-size: 14px; color: var(--text-muted); }
 
         .deal-timer {
@@ -275,6 +256,23 @@
             height: 30px;
             background: var(--purple);
             display: block;
+        }
+
+        /* BANNED INFO */
+        .banned-info {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .banned-icon {
+            font-size: 24px;
+            color: var(--red);
         }
 
         /* PRICING */
@@ -622,10 +620,6 @@
     <div class="container nav-content">
         <div class="logo">
             <span>CYBER</span>LEEK
-            <div class="coin-badge" title="CoinGecko Verified">
-                <img src="https://assets.coingecko.com/coins/images/102175616/standard/u5p8iho92d1t5f8m2k95da1j3yer.?1787116786" alt="Coin Icon">
-                <strong>CYBERLEEK</strong>
-            </div>
         </div>
         <nav class="nav-links">
             <a href="#logs">THE LOGS</a>
@@ -641,13 +635,13 @@
     <div class="container">
         <div class="alert-bar">
             <span style="width: 8px; height: 8px; background: var(--red); border-radius: 50%;"></span>
-            $1M PAID — SERVERS CLOSING
+            DEADLINE: 24 HOURS TO PAY $1M
         </div>
         
         <h1>DEFINITIVE <br><span class="text-purple">GTA VI BUILD</span></h1>
         <p>
             We bypassed the firewall. SQL Injection executed at 03:00 UTC. 
-            Rockstar has paid $1,000,000 to take this build offline. 
+            Rockstar has 24 hours to pay $1,000,000 to keep this build online. 
             Once the timer hits zero, the servers go dark forever.
         </p>
         
@@ -658,31 +652,47 @@
     </div>
 </section>
 
-<!-- DEAL BANNER -->
-<section class="section" style="padding: 40px 0; border-bottom: 1px solid var(--yellow);">
+<!-- DEAL BANNER (UPDATED) -->
+<section class="section" style="padding: 40px 0; border-bottom: 1px solid var(--red);">
     <div class="container">
         <div class="deal-banner">
             <div class="deal-content">
                 <h3>ROCKSTAR DEAL CONFIRMED: $1,000,000 USD</h3>
-                <p>Rockstar has paid the ransom. This build is guaranteed authentic. Once the timer hits zero, the servers go dark forever.</p>
+                <p>Rockstar has <strong>24 hours</strong> to pay the ransom. If the timer hits zero, this site goes offline and the servers are wiped. This is your only warning.</p>
             </div>
             <div class="deal-timer" id="countdown">23:59:45</div>
         </div>
     </div>
 </section>
 
-<!-- LIVE SALES COUNTER -->
+<!-- LIVE SALES COUNTER (UPDATED TO 20K) -->
 <section style="padding: 40px 0; border-bottom: 1px solid var(--border);">
     <div class="container">
         <div class="live-counter">
-            <div class="counter-label">LICENCES CLAIMED</div>
-            <div class="counter-display" id="counter">842</div>
-            <div style="font-size: 14px; color: var(--green);">OUT OF 1,000 TOTAL SPOTS</div>
+            <div class="counter-label">LICENCES CLAIMED (20,000 TOTAL)</div>
+            <div class="counter-display" id="counter">14,205</div>
+            <div style="font-size: 14px; color: var(--green);">SPOTS REMAINING: 5,795</div>
         </div>
     </div>
 </section>
 
-<!-- HACK INFO (NIEUW) -->
+<!-- BANNED INFO (NEW) -->
+<section class="section" style="padding-top: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--border);">
+    <div class="container">
+        <div class="banned-info">
+            <div class="banned-icon">⚠️</div>
+            <div>
+                <h4 style="color: var(--text); margin-bottom: 5px;">ORIGINAL REDDIT & DISCORD BANNED</h4>
+                <p style="color: var(--text-muted); font-size: 14px;">
+                    Rockstar Legal has issued a takedown notice. The original subreddit and Discord server have been shut down. 
+                    <strong>This is the new primary hub.</strong> All latest leaks are being published here first.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HACK INFO -->
 <section id="hack" class="section">
     <div class="container">
         <div class="section-header">
@@ -693,27 +703,96 @@
         <div class="hack-grid">
             <div class="hack-card">
                 <h4>Map Data Extracted</h4>
-                <p>De volledige 1:10 schaal van Vice City is gedumpt. Inclusief underground tunnels, untextured zones en ongebruikte eilanden. De map data is compleet.</p>
+                <p>The full 1:10 scale of Vice City has been dumped. Includes underground tunnels, untextured zones, and unexplored islands. The map data is complete.</p>
             </div>
             <div class="hack-card">
-                <h4>Ai Scripting</h4>
-                <p>We hebben de C# scripts voor het AI-gedrag van zowel het verkeer als de voetgangers gestolen. Dit bepaalt hoe realistisch de wereld nu voelt.</p>
+                <h4>AI Scripting</h4>
+                <p>We stole the C# scripts for traffic and pedestrian AI behavior. This determines how real the world feels.</p>
             </div>
             <div class="hack-card">
                 <h4>Audio Logs</h4>
-                <p>Ongebruikte voice lines van hoofdpersonages J en Lucia, evenals de volledige achtergrondmuziek en radiostations zijn gestolen.</p>
+                <p>Unused voice lines for main characters J and Lucia, plus the full background music and radio stations have been stolen.</p>
             </div>
             <div class="hack-card">
                 <h4>Character Models</h4>
-                <p>High-poly modellen voor alle personages zijn geëxtraheerd. Inclusief facial rig data en animatie bomen.</p>
+                <p>High-poly models for all characters have been extracted. Includes facial rig data and animation trees.</p>
             </div>
             <div class="hack-card">
                 <h4>V-Sync Bypass</h4>
-                <p>De build heeft een native V-Sync bypass die zorgt voor 120FPS+ op high-end PC hardware zonder input lag.</p>
+                <p>The build has a native V-Sync bypass that ensures 120FPS+ on high-end PC hardware without input lag.</p>
             </div>
             <div class="hack-card">
                 <h4>Server Architecture</h4>
-                <p>De complete server-side logica voor multiplayer is gedumpt. Dit maakt lokale multiplayer servers mogelijk.</p>
+                <p>The complete server-side logic for multiplayer has been dumped. This allows for local multiplayer servers.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT WE'VE DONE SECTION (NEW) -->
+<section id="what-we-done" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">WHAT WE'VE DONE SO FAR</h2>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto;">
+            <p style="margin-bottom: 20px; color: var(--text-muted);">
+                Over the past few days, we’ve pushed the GTA VI leak further than anyone expected. 
+                Here’s what we’ve released and documented so far:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px;">
+                <div class="hack-card" style="border-color: var(--purple);">
+                    <h4>Footage</h4>
+                    <ul style="list-style: none; font-size: 13px; color: var(--text-muted); padding-left: 0;">
+                        <li>• Jason gameplay and combat</li>
+                        <li>• Vehicle and carjacking</li>
+                        <li>• Police & NPC interactions</li>
+                        <li>• Motorcycle & Aircraft gameplay</li>
+                        <li>• Leonida aerial views</li>
+                        <li>• Vice City environment</li>
+                        <li>• Gas station & refueling</li>
+                    </ul>
+                </div>
+                <div class="hack-card" style="border-color: var(--purple);">
+                    <h4>Data & Assets</h4>
+                    <ul style="list-style: none; font-size: 13px; color: var(--text-muted); padding-left: 0;">
+                        <li>• Interior locations</li>
+                        <li>• Map material & locations</li>
+                        <li>• UI & gameplay systems</li>
+                        <li>• Dev-build details</li>
+                        <li>• Technical/debug info</li>
+                        <li>• Screenshots & assets</li>
+                    </ul>
+                </div>
+                <div class="hack-card" style="border-color: var(--purple);">
+                    <h4>Research</h4>
+                    <ul style="list-style: none; font-size: 13px; color: var(--text-muted); padding-left: 0;">
+                        <li>• Playable build info</li>
+                        <li>• Take-Two legal response</li>
+                        <li>• CYBERLEEK campaign info</li>
+                        <li>• Older dev material comparison</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="color: var(--text); font-weight: 600; margin-bottom: 10px;">
+                We’ve also documented what we believe to be older development material and compared it with the latest footage to determine what has changed.
+            </p>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 30px;">
+                This is only what we’ve chosen to show publicly. There is still significantly more information that has not been published.
+            </p>
+
+            <div style="background: rgba(139,44,255,0.1); border: 1px solid var(--purple); padding: 20px; border-radius: 6px;">
+                <p style="color: var(--text); font-weight: 700;">
+                    We’re currently organizing everything on the new site so that the latest material, timeline, research and updates can be found in one place.
+                </p>
+                <p style="color: var(--text-muted); margin-top: 15px;">
+                    This story isn't over.<br>
+                    More information coming soon.<br><br>
+                    <span class="text-purple">— CYBERLEEK</span>
+                </p>
             </div>
         </div>
     </div>
@@ -745,7 +824,7 @@
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">SELECT ACCESS LEVEL</h2>
-            <div class="mono" style="color: var(--text-muted); font-size: 12px;">ACCEPTED: BTC / ETH / LTC / <span class="text-purple">CYBERLEEK COIN</span></div>
+            <div class="mono" style="color: var(--text-muted); font-size: 12px;">ACCEPTED: BTC / ETH / LTC</div>
         </div>
 
         <div class="pricing-grid">
@@ -886,7 +965,7 @@
     <div class="container">
         <p>&copy; 2026 CYBERLEEK ARCHIVE. NOT AFFILIATED WITH ROCKSTAR GAMES.</p>
         <p style="margin-top: 10px; font-family: var(--font-mono); color: var(--purple);">
-            NODE_ID: 8849-X // LATENCY: 12ms // COIN: CYBERLEEK
+            NODE_ID: 8849-X // LATENCY: 12ms
         </p>
         <div style="margin-top: 20px; opacity: 0.6;">
             Powered by <a href="https://notrack.ai" style="color: var(--text); text-decoration: none;">notrack.ai</a> 
@@ -983,13 +1062,13 @@
     }
 
     // LIVE COUNTER LOGIC
-    let count = 842;
+    let count = 14205;
     const counterEl = document.getElementById('counter');
     
     setInterval(() => {
         if(Math.random() > 0.7) {
             count++;
-            counterEl.textContent = count;
+            counterEl.textContent = count.toLocaleString();
             counterEl.style.color = "white";
             setTimeout(() => { counterEl.style.color = "var(--red)"; }, 300);
         }
