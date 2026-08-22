@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CYBERLEEK — PRIVATE ACCESS</title>
+
+<style>
+:root {
+    --purple: #8b2cff;
+    --purple-light: #c47cff;
+    --purple-dark: #350064;
+    --bg: #07030d;
+    --bg2: #0e0717;
+    --card: #120a1d;
+    --white: #ffffff;
+    --muted: #b9aec4;
+    --border: rgba(180, 100, 255, 0.28);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% -10%, #2c0750 0%, transparent 40%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND GRID */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(rgba(139,44,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139,44,255,.045) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+}
+
+/* NAV */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 76px;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(7,3,13,.88);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-shadow: 0 0 25px var(--purple);
+}
+
+.logo span {
+    color: var(--purple-light);
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+nav ul a {
+    color: #c7bdd1;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+nav ul a:hover {
+    color: white;
+    text-shadow: 0 0 15px var(--purple);
+}
+
+.menu-button {
+    display: none;
+    background: transparent;
+    color: white;
+    border: 1px solid var(--border);
+    padding: 9px 13px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    padding: 150px 20px 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 1050px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 9px 18px;
+    margin-bottom: 28px;
+
+    border: 1px solid var(--purple);
+    background: rgba(139,44,255,.08);
+
+    color: var(--purple-light);
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+h1 {
+    font-size: clamp(70px, 13vw, 170px);
+    line-height: .8;
+    letter-spacing: -7px;
+    margin-bottom: 35px;
+}
+
+h1 span {
+    color: var(--purple-light);
+    text-shadow:
+        0 0 25px var(--purple),
+        0 0 70px rgba(139,44,255,.65);
+}
+
+.hero p {
+    max-width: 750px;
+    margin: auto;
+
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+
+    margin: 30px 0;
+
+    padding: 11px 17px;
+
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.02);
+
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+
+    margin-right: 9px;
+
+    border-radius: 50%;
+
+    background: var(--purple-light);
+
+    box-shadow:
+        0 0 10px var(--purple),
+        0 0 25px var(--purple);
+}
+
+/* BUTTONS */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn {
+    display: inline-block;
+
+    padding: 16px 28px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+    transition: .25s;
+}
+
+.btn-primary {
+    background: var(--purple);
+    color: white;
+
+    border: 1px solid var(--purple-light);
+
+    box-shadow: 0 0 30px rgba(139,44,255,.25);
+}
+
+.btn-primary:hover {
+    background: white;
+    color: var(--purple);
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 0 45px rgba(139,44,255,.6);
+}
+
+.btn-outline {
+    border: 1px solid var(--border);
+    color: white;
+    background: rgba(255,255,255,.02);
+}
+
+.btn-outline:hover {
+    border-color: var(--purple-light);
+    transform: translateY(-4px);
+}
+
+/* SECTIONS */
+
+section {
+    max-width: 1450px;
+    margin: auto;
+    padding: 110px 7%;
+}
+
+.section-tag {
+    color: var(--purple-light);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: .95;
+    margin-bottom: 25px;
+}
+
+.description {
+    max-width: 850px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 50px;
+}
+
+/* ACCESS CARD */
+
+.access-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    overflow: hidden;
+
+    background: linear-gradient(145deg, #170923, #09040e);
+
+    border: 1px solid var(--purple);
+
+    box-shadow: 0 0 60px rgba(139,44,255,.1);
+}
+
+.access-left,
+.access-right {
+    padding: 60px;
+}
+
+.access-right {
+    background: rgba(139,44,255,.06);
+    border-left: 1px solid var(--border);
+}
+
+.price-label {
+    color: var(--purple-light);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.price {
+    font-size: 90px;
+    font-weight: 900;
+    margin: 15px 0;
+}
+
+.price span {
+    font-size: 30px;
+    color: var(--purple-light);
+}
+
+.access-list {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.access-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    color: #ddd5e4;
+}
+
+.access-list li::before {
+    content: "✓";
+    color: var(--purple-light);
+    margin-right: 12px;
+}
+
+/* COUNTDOWN */
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.time-box {
+    padding: 18px 8px;
+    text-align: center;
+
+    border: 1px solid var(--border);
+    background: rgba(0,0,0,.25);
+}
+
+.time-number {
+    display: block;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.time-label {
+    display: block;
+    margin-top: 5px;
+
+    color: var(--purple-light);
+
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+/* INFO GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: linear-gradient(145deg, var(--card), #09050e);
+
+    border: 1px solid var(--border);
+
+    padding: 30px;
+
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--purple-light);
+    box-shadow: 0 15px 50px rgba(139,44,255,.14);
+}
+
+.card-id {
+    color: var(--purple-light);
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+/* DOWNLOAD AREA */
+
+.download-panel {
+    text-align: center;
+
+    padding: 80px 30px;
+
+    border: 1px solid var(--purple);
+
+    background:
+        radial-gradient(circle at center, rgba(139,44,255,.15), transparent 65%),
+        #09040e;
+}
+
+.download-icon {
+    width: 90px;
+    height: 90px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--purple);
+
+    font-size: 35px;
+
+    box-shadow: 0 0 45px rgba(139,44,255,.55);
+}
+
+.download-panel p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+/* CRYPTO */
+
+.crypto-box {
+    text-align: center;
+
+    padding: 80px 30px;
+
+    border: 1px solid var(--purple);
+
+    background: linear-gradient(145deg, rgba(139,44,255,.15), #08030e);
+}
+
+.crypto-icon {
+    font-size: 50px;
+    color: var(--purple-light);
+    margin-bottom: 20px;
+}
+
+.crypto-box p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+/* EVENT */
+
+.event-box {
+    text-align: center;
+
+    padding: 85px 30px;
+
+    border: 1px solid var(--purple);
+
+    background:
+        radial-gradient(circle at center, rgba(139,44,255,.2), transparent 60%),
+        #09040e;
+}
+
+.event-date {
+    color: var(--purple-light);
+    font-size: clamp(28px, 5vw, 55px);
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* DISCLAIMER */
+
+.disclaimer {
+    max-width: 1000px;
+    margin: 40px auto 0;
+
+    padding: 22px;
+
+    border: 1px solid var(--border);
+
+    color: #968a9f;
+
+    background: rgba(255,255,255,.015);
+
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    padding: 60px 20px;
+
+    border-top: 1px solid var(--border);
+
+    color: #81758a;
+    font-size: 12px;
+}
+
+.footer-logo {
+    color: white;
+
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 5px;
+
+    margin-bottom: 15px;
+
+    text-shadow: 0 0 30px var(--purple);
+}
+
+.footer-logo span {
+    color: var(--purple-light);
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+    nav {
+        padding: 0 20px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+
+        position: absolute;
+        top: 76px;
+        left: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        padding: 30px;
+
+        background: #0b0512;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    section {
+        padding: 80px 20px;
+    }
+
+    .access-card {
+        grid-template-columns: 1fr;
+    }
+
+    .access-right {
+        border-left: none;
+        border-top: 1px solid var(--border);
+    }
+
+    .access-left,
+    .access-right {
+        padding: 40px 25px;
+    }
+
+    .countdown {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#" class="logo">
+        CYBER<span>LEEK</span>
+    </a>
+
+    <button class="menu-button" onclick="toggleMenu()">
+        MENU
+    </button>
+
+    <ul id="navMenu">
+        <li><a href="#access">ACCESS</a></li>
+        <li><a href="#event">28 AUGUST</a></li>
+        <li><a href="#archive">ARCHIVE</a></li>
+        <li><a href="#download">DOWNLOAD</a></li>
+        <li><a href="#support">SUPPORT</a></li>
+    </ul>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+
+        <div class="badge">
+            PRIVATE ACCESS • OPENS 28 AUGUST 2026
+        </div>
+
+        <h1>
+            CYBER<span>LEEK</span>
+        </h1>
+
+        <p>
+            Private CyberLeek access opens on August 28, 2026.
+            Access remains active until the official release of Grand Theft Auto VI.
+        </p>
+
+        <div class="status">
+            <span class="dot"></span>
+            PRIVATE ACCESS SYSTEM: STANDBY
+        </div>
+
+        <div class="buttons">
+            <a href="#access" class="btn btn-primary">
+                GET ACCESS
+            </a>
+
+            <a href="#event" class="btn btn-outline">
+                ACCESS OPENS 28 AUG
+            </a>
+        </div>
+
+    </div>
+</header>
+
+<section id="access">
+
+    <div class="section-tag">
+        01 // PRIVATE ACCESS
+    </div>
+
+    <h2>
+        ACCESS STARTS<br>28 AUGUST
+    </h2>
+
+    <p class="description">
+        Private access is scheduled to open on August 28, 2026.
+        Members retain access until the official release date of Grand Theft Auto VI.
+    </p>
+
+    <div class="access-card">
+
+        <div class="access-left">
+
+            <div class="price-label">
+                PRIVATE ACCESS
+            </div>
+
+            <div class="price">
+                <span>$</span>100
+            </div>
+
+            <p style="color:var(--muted); line-height:1.8;">
+                One-time access to the CyberLeek private archive and
+                authorized member content.
+            </p>
+
+            <ul class="access-list">
+                <li>Access opens August 28, 2026</li>
+                <li>Private member archive</li>
+                <li>Large file archive: up to 412 GB</li>
+                <li>Member download area</li>
+                <li>Access active until official GTA VI release</li>
+            </ul>
+
+        </div>
+
+        <div class="access-right">
+
+            <div class="price-label">
+                ACCESS OPENS IN
+            </div>
+
+            <div class="countdown" id="countdown">
+
+                <div class="time-box">
+                    <span class="time-number" id="days">00</span>
+                    <span class="time-label">DAYS</span>
+                </div>
+
+                <div class="time-box">
+                    <span class="time-number" id="hours">00</span>
+                    <span class="time-label">HOURS</span>
+                </div>
+
+                <div class="time-box">
+                    <span class="time-number" id="minutes">00</span>
+                    <span class="time-label">MINUTES</span>
+                </div>
+
+                <div class="time-box">
+                    <span class="time-number" id="seconds">00</span>
+                    <span class="time-label">SECONDS</span>
+                </div>
+
+            </div>
+
+            <a
+                href="YOUR_CRYPTO_LINK"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                style="width:100%; text-align:center;"
+            >
+                GET PRIVATE ACCESS — $100
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="event">
+
+    <div class="event-box">
+
+        <div class="section-tag">
+            02 // ACCESS EVENT
+        </div>
+
+        <h2>
+            ACCESS OPENS
+        </h2>
+
+        <div class="event-date">
+            28 AUGUST 2026
+        </div>
+
+        <p style="max-width:750px; margin:0 auto; color:var(--muted); line-height:1.8;">
+            On August 28, private access becomes available.
+            Members can continue using their authorized CyberLeek access
+            until the official release of Grand Theft Auto VI.
+        </p>
+
+    </div>
+
+</section>
+
+<section id="archive">
+
+    <div class="section-tag">
+        03 // PRIVATE ARCHIVE
+    </div>
+
+    <h2>
+        WHAT'S INCLUDED
+    </h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="card-id">ARCHIVE_001</div>
+            <h3>Private Access</h3>
+            <p>
+                Access to the private CyberLeek member area and archive.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-id">ARCHIVE_002</div>
+            <h3>412 GB Capacity</h3>
+            <p>
+                The archive is designed for a large collection of authorized files,
+                media and project content.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-id">ARCHIVE_003</div>
+            <h3>Member Downloads</h3>
+            <p>
+                Private download access can be activated for approved members.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-id">ARCHIVE_004</div>
+            <h3>Access Period</h3>
+            <p>
+                Access starts August 28, 2026 and remains active until the
+                official GTA VI release.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="download">
+
+    <div class="download-panel">
+
+        <div class="download-icon">
+            ↓
+        </div>
+
+        <div class="section-tag">
+            04 // MEMBER DOWNLOAD
+        </div>
+
+        <h2>
+            DOWNLOAD AREA
+        </h2>
+
+        <p>
+            This section can link authorized members to your own private
+            files, launcher, application, archive or download portal.
+        </p>
+
+        <!-- Replace with your legitimate download/member portal -->
+
+        <a
+            href="#"
+            class="btn btn-outline"
+        >
+            MEMBER LOGIN REQUIRED
+        </a>
+
+    </div>
+
+</section>
+
+<section id="support">
+
+    <div class="crypto-box">
+
+        <div class="crypto-icon">
+            ₿
+        </div>
+
+        <div class="section-tag">
+            05 // PAYMENT & SUPPORT
+        </div>
+
+        <h2>
+            GET ACCESS
+        </h2>
+
+        <p>
+            Use the official CyberLeek payment or crypto link to request
+            access to your authorized private content.
+        </p>
+
+        <!-- Replace YOUR_CRYPTO_LINK -->
+
+        <a
+            href="YOUR_CRYPTO_LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+        >
+            OPEN PAYMENT LINK
+        </a>
+
+    </div>
+
+</section>
+
+<div class="disclaimer">
+    <strong>INDEPENDENT PROJECT NOTICE:</strong>
+    CyberLeek is an independent project. This website does not claim affiliation
+    with Rockstar Games or Take-Two Interactive. Any GTA VI references are used
+    for commentary, event timing and descriptive purposes. Do not represent
+    unauthorized, leaked, stolen or copyrighted Rockstar software as an official
+    or authorized product.
+</div>
+
+<footer>
+
+    <div class="footer-logo">
+        CYBER<span>LEEK</span>
+    </div>
+
+    <p>PRIVATE ACCESS SYSTEM — 2026</p>
+
+    <br>
+
+    <p>
+        ACCESS OPENS: AUGUST 28, 2026
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 CYBERLEEK
+    </p>
+
+</footer>
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMenu() {
+    document
+        .getElementById("navMenu")
+        .classList
+        .toggle("active");
+}
+
+
+/* COUNTDOWN TO AUGUST 28, 2026 */
+
+const eventDate =
+    new Date("August 28, 2026 00:00:00").getTime();
+
+
+function updateCountdown() {
+
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance <= 0) {
+
+        document.getElementById("countdown").innerHTML = `
+            <div style="
+                grid-column:1 / -1;
+                padding:20px;
+                color:white;
+                font-size:20px;
+                font-weight:bold;
+                text-align:center;
+            ">
+                PRIVATE ACCESS IS NOW OPEN
+            </div>
+        `;
+
+        return;
+    }
+
+    const days =
+        Math.floor(
+            distance / (1000 * 60 * 60 * 24)
+        );
+
+    const hours =
+        Math.floor(
+            (distance % (1000 * 60 * 60 * 24))
+            / (1000 * 60 * 60)
+        );
+
+    const minutes =
+        Math.floor(
+            (distance % (1000 * 60 * 60))
+            / (1000 * 60)
+        );
+
+    const seconds =
+        Math.floor(
+            (distance % (1000 * 60))
+            / 1000
+        );
+
+    document.getElementById("days").textContent =
+        String(days).padStart(2, "0");
+
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+</script>
+
+</body>
+</html>
