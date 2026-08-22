@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBERLEEK — THE FINAL DEAL</title>
+    <title>CYBERLEEK — GTA VI: FINAL BUILD</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #030106;
             --bg-card: #0a0512;
+            --bg-card-hover: #120820;
             --border: rgba(139, 44, 255, 0.15);
             --border-active: #8b2cff;
             --purple: #8b2cff;
@@ -113,6 +114,7 @@
             gap: 8px;
             color: var(--text-muted);
             transition: 0.3s;
+            cursor: pointer;
         }
         
         .coin-badge:hover { border-color: var(--purple); color: var(--text); }
@@ -221,6 +223,31 @@
             transform: translateY(-2px);
         }
 
+        /* DEAL BANNER */
+        .deal-banner {
+            background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent);
+            border: 1px solid var(--yellow);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .deal-content h3 { color: var(--yellow); margin-bottom: 5px; }
+        .deal-content p { font-size: 14px; color: var(--text-muted); }
+
+        .deal-timer {
+            font-family: var(--font-mono);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--red);
+            text-shadow: 0 0 10px rgba(255, 42, 42, 0.5);
+        }
+
         /* SECTIONS */
         .section { padding: 100px 0; border-top: 1px solid var(--border); position: relative; }
         
@@ -248,31 +275,6 @@
             height: 30px;
             background: var(--purple);
             display: block;
-        }
-
-        /* DEAL BANNER */
-        .deal-banner {
-            background: linear-gradient(90deg, rgba(251, 191, 36, 0.1), transparent);
-            border: 1px solid var(--yellow);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .deal-content h3 { color: var(--yellow); margin-bottom: 5px; }
-        .deal-content p { font-size: 14px; color: var(--text-muted); }
-
-        .deal-timer {
-            font-family: var(--font-mono);
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--red);
-            text-shadow: 0 0 10px rgba(255, 42, 42, 0.5);
         }
 
         /* PRICING */
@@ -405,28 +407,35 @@
             color: var(--text-muted);
         }
 
-        /* ROCKSTAR INFO */
-        .rockstar-grid {
+        /* HACK INFO */
+        .hack-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
-        .rockstar-card {
+        .hack-card {
             background: rgba(255,255,255,0.02);
             border: 1px solid var(--border);
             padding: 25px;
             border-radius: 6px;
+            transition: 0.3s;
         }
 
-        .rockstar-card h4 {
+        .hack-card:hover {
+            border-color: var(--purple);
+            background: rgba(139, 44, 255, 0.05);
+        }
+
+        .hack-card h4 {
             color: var(--purple-glow);
             margin-bottom: 10px;
             font-size: 14px;
             text-transform: uppercase;
+            font-family: var(--font-mono);
         }
 
-        .rockstar-card p {
+        .hack-card p {
             font-size: 13px;
             color: var(--text-muted);
             line-height: 1.5;
@@ -620,8 +629,8 @@
         </div>
         <nav class="nav-links">
             <a href="#logs">THE LOGS</a>
+            <a href="#hack">THE HACK</a>
             <a href="#media">MEDIA</a>
-            <a href="#rockstar">THE LEAK</a>
             <a href="#pricing" style="color: var(--purple-glow);">GET ACCESS</a>
         </nav>
     </div>
@@ -632,14 +641,14 @@
     <div class="container">
         <div class="alert-bar">
             <span style="width: 8px; height: 8px; background: var(--red); border-radius: 50%;"></span>
-            PREVIOUS SITES PURGED — THIS IS THE FINAL BUILD
+            $1M PAID — SERVERS CLOSING
         </div>
         
         <h1>DEFINITIVE <br><span class="text-purple">GTA VI BUILD</span></h1>
         <p>
             We bypassed the firewall. SQL Injection executed at 03:00 UTC. 
-            We have the source, the assets, and the playable executable. 
-            This is the leak that ends all leaks.
+            Rockstar has paid $1,000,000 to take this build offline. 
+            Once the timer hits zero, the servers go dark forever.
         </p>
         
         <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
@@ -673,6 +682,43 @@
     </div>
 </section>
 
+<!-- HACK INFO (NIEUW) -->
+<section id="hack" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">GTA VI HACK DEEP DIVE</h2>
+            <div class="mono text-purple">SOURCE: ROCKSTAR_PRIVATE_CLOUD</div>
+        </div>
+
+        <div class="hack-grid">
+            <div class="hack-card">
+                <h4>Map Data Extracted</h4>
+                <p>De volledige 1:10 schaal van Vice City is gedumpt. Inclusief underground tunnels, untextured zones en ongebruikte eilanden. De map data is compleet.</p>
+            </div>
+            <div class="hack-card">
+                <h4>Ai Scripting</h4>
+                <p>We hebben de C# scripts voor het AI-gedrag van zowel het verkeer als de voetgangers gestolen. Dit bepaalt hoe realistisch de wereld nu voelt.</p>
+            </div>
+            <div class="hack-card">
+                <h4>Audio Logs</h4>
+                <p>Ongebruikte voice lines van hoofdpersonages J en Lucia, evenals de volledige achtergrondmuziek en radiostations zijn gestolen.</p>
+            </div>
+            <div class="hack-card">
+                <h4>Character Models</h4>
+                <p>High-poly modellen voor alle personages zijn geëxtraheerd. Inclusief facial rig data en animatie bomen.</p>
+            </div>
+            <div class="hack-card">
+                <h4>V-Sync Bypass</h4>
+                <p>De build heeft een native V-Sync bypass die zorgt voor 120FPS+ op high-end PC hardware zonder input lag.</p>
+            </div>
+            <div class="hack-card">
+                <h4>Server Architecture</h4>
+                <p>De complete server-side logica voor multiplayer is gedumpt. Dit maakt lokale multiplayer servers mogelijk.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- HACK LOGS -->
 <section id="logs" class="section">
     <div class="container">
@@ -694,41 +740,12 @@
     </div>
 </section>
 
-<!-- ROCKSTAR INFO -->
-<section id="rockstar" class="section">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">ROCKSTAR DATA EXTRACTED</h2>
-            <div class="mono" style="color: var(--text-muted); font-size: 12px;">SOURCE: INTERNAL_SERVER_04</div>
-        </div>
-
-        <div class="rockstar-grid">
-            <div class="rockstar-card">
-                <h4>Map Assets</h4>
-                <p>Complete 1:10 scale map of Vice City. Includes underground tunnels, untextured zones, and unused islands.</p>
-            </div>
-            <div class="rockstar-card">
-                <h4>Script Files</h4>
-                <p>Raw C# scripts for all mission logic, traffic AI, and pedestrian behavior trees.</p>
-            </div>
-            <div class="rockstar-card">
-                <h4>Character Models</h4>
-                <p>High-poly models for all main characters, including "J" and "Lucia". Includes facial rig data.</p>
-            </div>
-            <div class="rockstar-card">
-                <h4>Audio Logs</h4>
-                <p>Unused voice lines, background radio stations, and the full score soundtrack.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- PRICING -->
 <section id="pricing" class="section">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">SELECT ACCESS LEVEL</h2>
-            <div class="mono" style="color: var(--text-muted); font-size: 12px;">ACCEPTED: BTC / ETH / LTC / CYBERLEEK COIN</div>
+            <div class="mono" style="color: var(--text-muted); font-size: 12px;">ACCEPTED: BTC / ETH / LTC / <span class="text-purple">CYBERLEEK COIN</span></div>
         </div>
 
         <div class="pricing-grid">
