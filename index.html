@@ -1,715 +1,804 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBERLEEK — GTA VI INTERNAL ACCESS</title>
-    <style>
-        /* --- CORE VARIABLES --- */
-        :root {
-            --purple: #8b2cff;
-            --purple-light: #c47cff;
-            --purple-dark: #350064;
-            --bg: #07030d;
-            --bg2: #0e0717;
-            --card: #120a1d;
-            --white: #ffffff;
-            --muted: #b9aec4;
-            --border: rgba(180, 100, 255, 0.28);
-            --success: #00ff9d;
-            --warning: #ffaa00;
-            --danger: #ff4444;
-            --mono: 'Courier New', Courier, monospace;
-        }
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>INTERNAL // GTA VI DATA ARCHIVE — 2026 BUILD</title> 
+<style> 
+:root { 
+    --purple: #8b2cff; 
+    --purple-glow: #b97cff; 
+    --purple-deep: #350064; 
+    --bg: #07030d; 
+    --bg2: #0e0717; 
+    --card: #120a1d; 
+    --card-hover: #1a0f2b;
+    --white: #ffffff; 
+    --muted: #b9aec4; 
+    --border: rgba(139, 44, 255, 0.3); 
+    --success: #00ff9d;
+    --font-main: 'Arial', 'Helvetica', sans-serif;
+    --font-code: 'Courier New', Courier, monospace;
+} 
 
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
-        html { scroll-behavior: smooth; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    outline: none;
+} 
 
-        body {
-            background: 
-                radial-gradient(circle at 50% -10%, #2c0750 0%, transparent 40%),
-                linear-gradient(180deg, var(--bg2), var(--bg));
-            color: var(--white);
-            font-family: 'Segoe UI', Arial, sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+html { 
+    scroll-behavior: smooth; 
+    scrollbar-width: thin;
+    scrollbar-color: var(--purple) var(--bg);
+} 
 
-        /* BACKGROUND GRID */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            pointer-events: none;
-            background-image: 
-                linear-gradient(rgba(139,44,255,.045) 1px, transparent 1px), 
-                linear-gradient(90deg, rgba(139,44,255,.045) 1px, transparent 1px);
-            background-size: 45px 45px;
-        }
+body { 
+    background: 
+        radial-gradient(circle at 50% -10%, #2c0750 0%, transparent 50%), 
+        linear-gradient(180deg, var(--bg2), var(--bg)); 
+    color: var(--white); 
+    font-family: var(--font-main); 
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.6;
+} 
 
-        /* UTILITIES */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .text-center { text-align: center; }
-        .text-purple { color: var(--purple-light); }
-        .text-mono { font-family: var(--mono); }
-        .mb-4 { margin-bottom: 2rem; }
-        .mb-8 { margin-bottom: 4rem; }
+/* BACKGROUND ANIMATED GRID */
+body::before { 
+    content: ""; 
+    position: fixed; 
+    inset: 0; 
+    z-index: -2; 
+    pointer-events: none; 
+    background-image: 
+        linear-gradient(rgba(139,44,255,.05) 1px, transparent 1px), 
+        linear-gradient(90deg, rgba(139,44,255,.05) 1px, transparent 1px); 
+    background-size: 40px 40px;
+    animation: gridMove 20s linear infinite;
+}
 
-        /* --- COMPONENTS --- */
+@keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+}
 
-        /* NAV */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 76px;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            background: rgba(7,3,13,.88);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid var(--border);
-        }
+/* NAV */
+nav { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 70px; 
+    z-index: 999; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 5%; 
+    background: rgba(7,3,13,.92); 
+    backdrop-filter: blur(12px); 
+    border-bottom: 1px solid var(--border); 
+} 
 
-        .logo {
-            color: white;
-            text-decoration: none;
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            text-shadow: 0 0 25px var(--purple);
-        }
-        .logo span { color: var(--purple-light); }
+.logo { 
+    color: white; 
+    text-decoration: none; 
+    font-size: 22px; 
+    font-weight: 900; 
+    letter-spacing: 2px; 
+    text-shadow: 0 0 10px var(--purple); 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+} 
 
-        nav ul { display: flex; gap: 25px; list-style: none; }
-        nav ul a {
-            color: #c7bdd1;
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            transition: 0.3s;
-        }
-        nav ul a:hover { color: white; text-shadow: 0 0 15px var(--purple); }
+.logo span { 
+    color: var(--purple-glow); 
+}
 
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            padding: 150px 20px 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
+.logo-badge {
+    background: var(--purple);
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
 
-        .hero-content { max-width: 1050px; }
+nav ul { 
+    display: flex; 
+    gap: 30px; 
+    list-style: none; 
+} 
 
-        .badge {
-            display: inline-block;
-            padding: 9px 18px;
-            margin-bottom: 28px;
-            border: 1px solid var(--purple);
-            background: rgba(139,44,255,.08);
-            color: var(--purple-light);
-            font-size: 11px;
-            font-weight: bold;
-            letter-spacing: 3px;
-        }
+nav ul a { 
+    color: #c7bdd1; 
+    text-decoration: none; 
+    font-size: 12px; 
+    font-weight: bold; 
+    letter-spacing: 1px; 
+    transition: 0.3s;
+    position: relative;
+} 
 
-        h1 {
-            font-size: clamp(50px, 10vw, 120px);
-            line-height: .8;
-            letter-spacing: -7px;
-            margin-bottom: 35px;
-        }
+nav ul a:hover { 
+    color: white; 
+} 
 
-        h1 span {
-            color: var(--purple-light);
-            text-shadow: 0 0 25px var(--purple), 0 0 70px rgba(139,44,255,.65);
-        }
+nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--purple);
+    transition: 0.3s;
+}
 
-        .status {
-            display: inline-flex;
-            align-items: center;
-            margin: 30px 0;
-            padding: 11px 17px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,.02);
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            font-family: var(--mono);
-        }
+nav ul a:hover::after {
+    width: 100%;
+}
 
-        .dot {
-            width: 9px; height: 9px;
-            margin-right: 9px;
-            border-radius: 50%;
-            background: var(--purple-light);
-            box-shadow: 0 0 10px var(--purple);
-        }
-        .dot.green { background: var(--success); box-shadow: 0 0 10px var(--success); animation: pulse 2s infinite; }
+/* HERO */
+.hero { 
+    padding: 180px 20px 80px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    position: relative;
+    overflow: hidden;
+}
 
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+/* Glitch Effect Text */
+.glitch-text {
+    position: relative;
+}
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+    opacity: 0.8;
+}
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
 
-        /* BUTTONS */
-        .btn {
-            display: inline-block;
-            padding: 16px 28px;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            transition: .25s;
-            border: 1px solid transparent;
-        }
-        .btn-primary { background: var(--purple); color: white; border-color: var(--purple-light); }
-        .btn-primary:hover { background: var(--purple-light); color: var(--bg); box-shadow: 0 0 30px var(--purple); }
-        .btn-outline { background: transparent; color: var(--purple-light); border: 1px solid var(--purple); }
-        .btn-outline:hover { background: rgba(139,44,255,.1); }
-        .btn-success { background: var(--success); color: var(--bg); border-color: var(--success); }
-        .btn-success:hover { background: #00cc7a; box-shadow: 0 0 30px var(--success); }
+@keyframes glitch-anim {
+    0% { clip: rect(12px, 9999px, 34px, 0); }
+    20% { clip: rect(80px, 9999px, 10px, 0); }
+    40% { clip: rect(2px, 9999px, 85px, 0); }
+    60% { clip: rect(55px, 9999px, 15px, 0); }
+    80% { clip: rect(30px, 9999px, 90px, 0); }
+    100% { clip: rect(60px, 9999px, 45px, 0); }
+}
+@keyframes glitch-anim2 {
+    0% { clip: rect(65px, 9999px, 10px, 0); }
+    20% { clip: rect(10px, 9999px, 55px, 0); }
+    40% { clip: rect(85px, 9999px, 20px, 0); }
+    60% { clip: rect(25px, 9999px, 70px, 0); }
+    80% { clip: rect(15px, 9999px, 45px, 0); }
+    100% { clip: rect(50px, 9999px, 80px, 0); }
+}
 
-        /* SECTIONS */
-        section { padding: 100px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        
-        .section-title {
-            font-size: 40px;
-            margin-bottom: 60px;
-            letter-spacing: -2px;
-            text-align: center;
-        }
 
-        /* VIDEO GALLERY */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
-        
-        .video-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            overflow: hidden;
-            position: relative;
-            transition: transform 0.3s;
-        }
-        .video-card:hover { transform: translateY(-5px); border-color: var(--purple); }
-        
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-        }
-        
-        .video-placeholder::after {
-            content: "▶";
-            font-size: 40px;
-            color: var(--purple-light);
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-        .video-card:hover .video-placeholder::after { opacity: 1; transform: scale(1.1); }
+.hero-content { 
+    max-width: 1100px; 
+    position: relative;
+    z-index: 1;
+} 
 
-        .video-info { padding: 15px; }
-        .video-title { font-weight: bold; margin-bottom: 5px; color: var(--white); }
-        .video-meta { font-size: 12px; color: var(--muted); font-family: var(--mono); }
+.badge { 
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px; 
+    margin-bottom: 30px; 
+    border: 1px solid var(--border); 
+    background: rgba(139,44,255,.1); 
+    color: var(--purple-glow); 
+    font-size: 12px; 
+    font-weight: bold; 
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 
-        /* LEAK DATA */
-        .leak-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .leak-card {
-            background: rgba(18, 10, 29, 0.5);
-            border: 1px solid var(--border);
-            padding: 25px;
-        }
-        .leak-card h3 { color: var(--purple-light); margin-bottom: 10px; font-size: 18px; }
-        .leak-card p { color: var(--muted); font-size: 14px; }
-        .tag { 
-            display: inline-block; 
-            padding: 4px 8px; 
-            background: rgba(139,44,255,0.2); 
-            color: var(--purple-light); 
-            font-size: 10px; 
-            margin-bottom: 10px;
-            border-radius: 4px;
-        }
+.dot-live {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--success);
+    animation: pulse 2s infinite;
+}
 
-        /* PRICING */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .price-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            padding: 40px;
-            text-align: center;
-            position: relative;
-        }
-        .price-card.featured {
-            border-color: var(--purple);
-            box-shadow: 0 0 40px rgba(139,44,255,.2);
-            transform: scale(1.05);
-            z-index: 2;
-        }
-        .price-card.featured::before {
-            content: "BEST VALUE";
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--purple);
-            color: white;
-            padding: 4px 15px;
-            font-size: 10px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-        .price { font-size: 48px; font-weight: 900; margin: 20px 0; color: var(--white); }
-        .price span { font-size: 18px; color: var(--muted); }
-        .price-list { list-style: none; margin: 30px 0; text-align: left; }
-        .price-list li { padding: 10px 0; border-bottom: 1px solid rgba(180,100,255,.1); color: var(--muted); font-size: 14px; }
-        .price-list li::before { content: "✓ "; color: var(--success); }
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
 
-        /* MODAL (Payment) */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        
-        .modal-box {
-            background: var(--bg2);
-            border: 1px solid var(--purple);
-            padding: 40px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            box-shadow: 0 0 50px rgba(139,44,255,0.3);
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px; right: 15px;
-            color: var(--muted);
-            cursor: pointer;
-            font-size: 24px;
-        }
-        
-        .crypto-address {
-            background: #000;
-            border: 1px dashed var(--purple-light);
-            padding: 15px;
-            font-family: var(--mono);
-            word-break: break-all;
-            margin: 20px 0;
-            color: var(--purple-light);
-            font-size: 14px;
-            text-align: center;
-        }
+h1 { 
+    font-size: clamp(40px, 8vw, 80px); 
+    line-height: .9; 
+    letter-spacing: -2px; 
+    margin-bottom: 20px; 
+    text-transform: uppercase;
+    font-weight: 900;
+} 
 
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; margin-bottom: 8px; font-size: 12px; letter-spacing: 1px; color: var(--muted); }
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border);
-            color: white;
-            font-family: var(--mono);
-        }
-        .input-group input:focus { border-color: var(--purple); }
+h1 span { 
+    color: var(--purple-glow); 
+    text-shadow: 0 0 20px rgba(139,44,255,.5);
+    display: block;
+} 
 
-        .code-display {
-            font-size: 32px;
-            font-weight: 900;
-            color: var(--success);
-            text-align: center;
-            letter-spacing: 5px;
-            margin: 20px 0;
-            text-shadow: 0 0 15px var(--success);
-            display: none;
-        }
+.hero p { 
+    max-width: 700px; 
+    margin: auto; 
+    color: var(--muted); 
+    font-size: 18px; 
+    margin-bottom: 40px; 
+} 
 
-        /* FOOTER */
-        footer {
-            padding: 50px 0;
-            text-align: center;
-            color: var(--muted);
-            font-size: 12px;
-            border-top: 1px solid var(--border);
-        }
+.status-bar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    font-family: var(--font-code);
+    font-size: 12px;
+    color: var(--purple);
+}
 
-        /* SCROLLBAR */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--purple-dark); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--purple); }
+/* BUTTONS */
+.buttons { 
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+} 
 
-    </style>
-</head>
-<body>
+.btn { 
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px; 
+    text-decoration: none; 
+    font-size: 13px; 
+    font-weight: bold; 
+    letter-spacing: 1px; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    color: white;
+} 
 
-    <!-- NAV -->
-    <nav>
-        <a href="#" class="logo">CYBER<span>LEEK</span></a>
-        <ul>
-            <li><a href="#leaks">LEAK DATA</a></li>
-            <li><a href="#videos">VIDEOS</a></li>
-            <li><a href="#pricing">ACCESS</a></li>
-            <li><a href="#source">SOURCE</a></li>
-        </ul>
-        <a href="#pricing" class="btn btn-outline" style="padding: 10px 20px;">BUY NOW</a>
-    </nav>
+.btn-primary { 
+    background: var(--purple); 
+    border: 1px solid var(--purple);
+    box-shadow: 0 0 20px rgba(139,44,255,0.3);
+} 
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="badge">INTERNAL BUILD v0.9.7</div>
-            <h1>GTA <span>VI</span> LEAK</h1>
-            <p style="color: var(--muted); max-width: 600px; margin: 0 auto 30px;">
-                Direct from Rockstar internal servers. Full Leonida map, all gameplay mechanics, and Jason's story unlocked. 
-                Don't wait for the official release.
-            </p>
-            
-            <div class="status">
-                <div class="dot green"></div>
-                STATUS: ONLINE & PLAYABLE — 412 GB
-            </div>
-            
-            <br>
-            
-            <div style="display: flex; gap: 15px; justify-content: center;">
-                <a href="#videos" class="btn btn-outline">▶ WATCH PREVIEWS</a>
-                <a href="#pricing" class="btn btn-primary">GET ACCESS ($49+)</a>
-            </div>
+.btn-primary:hover { 
+    background: var(--purple-glow); 
+    box-shadow: 0 0 40px rgba(139,44,255,0.6);
+    transform: translateY(-2px);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+/* SECTIONS */
+.section {
+    padding: 80px 5%;
+    border-top: 1px solid rgba(139,44,255,0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-title::before {
+    content: '';
+    width: 4px;
+    height: 24px;
+    background: var(--purple);
+    display: block;
+}
+
+.section-meta {
+    font-family: var(--font-code);
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* GRID SYSTEM */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 30px;
+}
+
+/* CARDS */
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 25px;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    border-color: var(--purple);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: var(--card-hover);
+}
+
+.card-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(139,44,255,0.2);
+    color: var(--purple-glow);
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.card p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.card ul {
+    list-style: none;
+    font-size: 13px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.card ul li {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card ul li::before {
+    content: '>';
+    color: var(--purple);
+    font-weight: bold;
+}
+
+/* PRICING */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.pricing-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.pricing-card.featured {
+    border: 2px solid var(--purple);
+    background: linear-gradient(180deg, rgba(139,44,255,0.1) 0%, var(--card) 100%);
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.pricing-card.featured::before {
+    content: 'BEST VALUE';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--purple);
+    color: white;
+    padding: 4px 12px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 10px;
+}
+
+.price {
+    font-size: 40px;
+    font-weight: 900;
+    margin: 20px 0;
+    color: white;
+}
+
+.price span {
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: normal;
+}
+
+.pricing-features {
+    list-style: none;
+    margin: 20px 0;
+    text-align: left;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.pricing-features li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.pricing-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success);
+}
+
+.pricing-features li.locked {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+/* LEAKS TABLE */
+.leak-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-code);
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.leak-table th, .leak-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.leak-table th {
+    color: var(--purple-glow);
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.leak-status {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.status-complete { background: rgba(0, 255, 157, 0.2); color: var(--success); }
+.status-partial { background: rgba(255, 165, 0, 0.2); color: orange; }
+.status-new { background: rgba(139, 44, 255, 0.2); color: var(--purple-glow); }
+
+/* FOOTER */
+footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 5%;
+    text-align: center;
+    background: #05020a;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    h1 { font-size: 40px; }
+    nav ul { display: none; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .pricing-card.featured { transform: scale(1); }
+}
+</style> 
+</head> 
+
+<body> 
+
+<!-- NAV -->
+<nav> 
+    <a href="#" class="logo"> 
+        <span>GTA VI</span> // DATA
+        <span class="logo-badge">INTERNAL</span>
+    </a> 
+    <ul> 
+        <li><a href="#features">Assets</a></li> 
+        <li><a href="#leaks">Raw Leaks</a></li> 
+        <li><a href="#pricing">Access Keys</a></li> 
+        <li><a href="#faq">Docs</a></li> 
+    </ul> 
+    <div style="font-family: var(--font-code); font-size: 11px; color: var(--success);">
+        <span class="dot-live" style="display:inline-block; width:6px; height:6px; margin-right:5px;"></span> ONLINE
+    </div>
+</nav> 
+
+<!-- HERO -->
+<section class="hero"> 
+    <div class="hero-content"> 
+        <div class="badge">
+            <span class="dot-live" style="display:inline-block; margin-right:8px;"></span> 
+            DATABASE STATUS: 100% UNLOCKED
         </div>
-    </section>
-
-    <!-- LEAK DATA SECTION -->
-    <section id="leaks">
-        <div class="container">
-            <h2 class="section-title">Leak <span class="text-purple">Intelligence</span></h2>
-            <div class="leak-grid">
-                
-                <div class="leak-card">
-                    <span class="tag">MAP DATA</span>
-                    <h3>Leonida Complete</h3>
-                    <p>Full map assets recovered. Includes Vice City, Leonida County, all island chains, and untextured zones. No loading screens detected between counties.</p>
-                </div>
-
-                <div class="leak-card">
-                    <span class="tag">AUDIO</span>
-                    <h3>Radio & SFX</h3>
-                    <p>Full radio headsets recovered. Ambient audio includes dynamic police chatter, unique NPC interactions, and fully licensed tracks not seen in trailers.</p>
-                </div>
-
-                <div class="leak-card">
-                    <span class="tag">GAMEPLAY</span>
-                    <h3>Jason & Lucia</h3>
-                    <p>Playable segments for both protagonists. 'Venice Beach' area fully detailed. Combat mechanics include cover system, stealth takedowns, and vehicle combat.</p>
-                </div>
-
-                <div class="leak-card">
-                    <span class="tag">MISC</span>
-                    <h3>Physics & Vehicles</h3>
-                    <p>Hypercars (Oppressor, Sultan RS) verified. Aircraft flight model is functional. Stamina system present during sprinting. Water physics updated.</p>
-                </div>
-
-            </div>
+        <h1 class="glitch-text" data-text="GTA VI // INTERNAL BUILD">
+            GTA VI // INTERNAL BUILD
+        </h1>
+        <span style="color: var(--purple-glow); font-family: var(--font-code); font-size: 14px; margin-bottom: 20px; display: block;">
+            VERSION: 2.0.4 // DATE: AUGUST 2026
+        </span>
+        <p> 
+            We stripped the servers. This isn't just a leak; it's the source code, the full map, and every vehicle asset. No streaming, no missing files. This is the definitive "Disk" build.
+        </p> 
+        
+        <div class="status-bar">
+            <span>SERVERS: ACTIVE</span>
+            <span>DATA_SIZE: 145GB</span>
+            <span>ENCRYPTION: SHARED</span>
         </div>
-    </section>
 
-    <!-- VIDEOS SECTION -->
-    <section id="videos">
-        <div class="container">
-            <h2 class="section-title">Visual <span class="text-purple">Proof</span></h2>
-            <p class="text-center" style="margin-bottom: 30px; color: var(--muted);">
-                Raw footage extracted from the leak. <br>
-                <strong>Basic Access:</strong> Free View | <strong>Pro Access:</strong> 4K Uncompressed
-            </p>
+        <div class="buttons"> 
+            <a href="#pricing" class="btn btn-primary">GET 100% ACCESS — $55</a> 
+            <a href="#leaks" class="btn" style="border-color: var(--muted); color: var(--muted);">BROWSE PREVIEWS</a> 
+        </div> 
+    </div> 
+</section> 
 
-            <div class="video-grid">
-                <!-- Video 1 -->
-                <div class="video-card">
-                    <div class="video-placeholder" onclick="playVideo(this, 'plane.mp4')">
-                        <!-- Placeholder styling -->
-                        <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:2px 6px; font-size:10px; color:white;">plane.mp4</div>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">Flight Physics Test</div>
-                        <div class="video-meta">1920x1080 • 4:12 • Unclassified</div>
-                    </div>
-                </div>
-
-                <!-- Video 2 -->
-                <div class="video-card">
-                    <div class="video-placeholder" onclick="playVideo(this, 'junkies.mp4')">
-                        <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:2px 6px; font-size:10px; color:white;">junkies.mp4</div>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">NPC Interaction / Vice City</div>
-                        <div class="video-meta">1920x1080 • 2:30 • Unclassified</div>
-                    </div>
-                </div>
-
-                <!-- Video 3 -->
-                <div class="video-card">
-                    <div class="video-placeholder" onclick="playVideo(this, 'output.mp4')">
-                        <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:2px 6px; font-size:10px; color:white;">output.mp4</div>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">Map Overview (Leonida)</div>
-                        <div class="video-meta">1920x1080 • 8:45 • Classified</div>
-                    </div>
-                </div>
-
-                <!-- Video 4 -->
-                <div class="video-card">
-                    <div class="video-placeholder" onclick="playVideo(this, 'hypercar1.mp4')">
-                        <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:2px 6px; font-size:10px; color:white;">hypercar1.mp4</div>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">Hypercar Physics (Sultan RS)</div>
-                        <div class="video-meta">1920x1080 • 3:15 • Unclassified</div>
-                    </div>
-                </div>
-
-                <!-- Video 5 -->
-                <div class="video-card">
-                    <div class="video-placeholder" onclick="playVideo(this, 'video2.mp4')">
-                        <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:2px 6px; font-size:10px; color:white;">video2.mp4</div>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">Jason Gameplay (Early)</div>
-                        <div class="video-meta">1920x1080 • 5:00 • Unclassified</div>
-                    </div>
-                </div>
-
-                <!-- Video 6 -->
-                <div class="video-card">
-                    <div class="video-placeholder" onclick="playVideo(this, 'taser.mp4')">
-                        <div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:2px 6px; font-size:10px; color:white;">taser.mp4</div>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">Combat Mechanic (Taser)</div>
-                        <div class="video-meta">1920x1080 • 1:20 • Unclassified</div>
-                    </div>
-                </div>
-            </div>
+<!-- WHAT'S INSIDE -->
+<section id="features" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">DATA ARCHITECTURE</h2>
+            <div class="section-meta">FILE_COUNT: 4,200,000+</div>
         </div>
-    </section>
-
-    <!-- PRICING -->
-    <section id="pricing">
-        <div class="container">
-            <h2 class="section-title">Select <span class="text-purple">Access</span></h2>
-            
-            <div class="pricing-grid">
-                <!-- Basic -->
-                <div class="price-card">
-                    <h3>LEAKER</h3>
-                    <div class="price">$49<span>/USD</span></div>
-                    <p style="color:var(--muted); font-size: 14px;">Basic Entry</p>
-                    <ul class="price-list">
-                        <li>Standard Map Access</li>
-                        <li>View all 6 Videos</li>
-                        <li>7-Day Download Window</li>
-                        <li>Standard Support</li>
-                    </ul>
-                    <button class="btn btn-outline" style="width:100%" onclick="openPaymentModal('LEAKER', 49)">BUY NOW</button>
-                </div>
-
-                <!-- Pro -->
-                <div class="price-card featured">
-                    <h3>INSIDER</h3>
-                    <div class="price">$100<span>/USD</span></div>
-                    <p style="color:var(--muted); font-size: 14px;">Full Game Experience</p>
-                    <ul class="price-list">
-                        <li><strong>Full Game Build (412GB)</strong></li>
-                        <li>Jason & Lucia Gameplay</li>
-                        <li>High-Res Video Downloads</li>
-                        <li>30-Day Download Window</li>
-                        <li>Priority Support</li>
-                    </ul>
-                    <button class="btn btn-success" style="width:100%" onclick="openPaymentModal('INSIDER', 100)">BUY NOW</button>
-                </div>
-
-                <!-- Source Code -->
-                <div class="price-card">
-                    <h3>DEVELOPER</h3>
-                    <div class="price">$1000<span>/USD</span></div>
-                    <p style="color:var(--muted); font-size: 14px;">Source Code & Assets</p>
-                    <ul class="price-list">
-                        <li><strong>Full Source Code</strong></li>
-                        <li>Uncompressed Assets</li>
-                        <li>Level Editor Included</li>
-                        <li>Lifetime Access</li>
-                        <li>Direct Line to CyberLeek</li>
-                    </ul>
-                    <button class="btn btn-outline" style="width:100%" onclick="openPaymentModal('SOURCE', 1000)">BUY NOW</button>
-                </div>
+        
+        <div class="grid-3">
+            <div class="card">
+                <span class="card-tag">FULL MAP</span>
+                <h3>Geography & Biomes</h3>
+                <p>The entire Vice City and surrounding areas in 3D. Includes sewers, underground tunnels, and hidden easter eggs not seen in the trailers.</p>
+                <ul>
+                    <li>Downtown Vice City</li>
+                    <li>Ocean Beach (Full Detail)</li>
+                    <li>Vice Island</li>
+                    <li>Everglades Expansion</li>
+                </ul>
             </div>
 
-            <!-- ADD-ON -->
-            <div style="margin-top: 40px; background: rgba(139,44,255,0.1); border: 1px solid var(--purple); padding: 20px; text-align: center; border-radius: 8px;">
-                <h4 style="color: var(--purple-light); margin-bottom: 10px;">ADD-ON: RAW FOOTAGE PACK</h4>
-                <p style="margin-bottom: 15px;">Get all raw video files (4K) for $55.</p>
-                <button class="btn btn-primary" onclick="openPaymentModal('VIDEOS', 55)">ADD TO CART</button>
+            <div class="card">
+                <span class="card-tag">VEHICLES</span>
+                <h3>Vehicle Physics & Assets</h3>
+                <p>Every single car is unique. We've extracted the physics files. See exactly how the cars drive, handling included.</p>
+                <ul>
+                    <li>180+ Uniquely Handled Vehicles</li>
+                    <li>Realistic Crash Physics</li>
+                    <li>Custom Tuning Modus</li>
+                    <li>Water & Land Vehicles</li>
+                </ul>
             </div>
 
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 CYBERLEEK. All rights reserved.</p>
-            <p style="margin-top: 10px; opacity: 0.6;">Not affiliated with Rockstar Games or Take-Two Interactive. Internal build data verified by community.</p>
-        </div>
-    </footer>
-
-    <!-- PAYMENT MODAL -->
-    <div id="paymentModal" class="modal-overlay">
-        <div class="modal-box">
-            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
-            
-            <h3 id="modalTitle" style="margin-bottom: 20px; text-align: center;">Checkout</h3>
-            <p style="text-align: center; color: var(--muted); font-size: 13px;">Send exact amount in BTC to address below.</p>
-            
-            <div class="crypto-address" id="walletAddress">
-                1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+            <div class="card">
+                <span class="card-tag">MULTIPLAYER</span>
+                <h3>Netcode & Infrastructure</h3>
+                <p>The server structure is complete. We hacked the 'disk' version, meaning you can load the full data locally on your PC without streaming issues.</p>
+                <ul>
+                    <li>Dedicated Server Files</li>
+                    <li>No-Disk Mode Enabled</li>
+                    <li>Roleplay Scripting</li>
+                    <li>Custom Game Modes</li>
+                </ul>
             </div>
-            <p style="text-align: center; font-size: 11px; color: var(--muted); margin-bottom: 20px;">Network: Bitcoin (BTC)</p>
-
-            <div id="step1">
-                <div class="input-group">
-                    <label>YOUR EMAIL (For Download Link)</label>
-                    <input type="email" id="userEmail" placeholder="name@example.com">
-                </div>
-                <button class="btn btn-primary" style="width: 100%;" onclick="processPayment()">I HAVE PAID (GENERATE CODE)</button>
-            </div>
-
-            <div id="step2" style="display: none; text-align: center;">
-                <p style="color: var(--muted); font-size: 14px;">Payment Verified.</p>
-                <p style="font-size: 12px; margin-bottom: 10px;">Your Order Code:</p>
-                
-                <div class="code-display" id="orderCode">1242</div>
-                
-                <p style="font-size: 12px; color: var(--muted); margin-bottom: 20px;">
-                    Use this code at the download portal.<br>
-                    <strong>Do not share this code.</strong>
-                </p>
-                
-                <button class="btn btn-outline" onclick="closePaymentModal()">Close</button>
-            </div>
-
         </div>
     </div>
+</section>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // --- DATA ---
-        const prices = {
-            'LEAKER': 0.00015, // Mock BTC value
-            'INSIDER': 0.00035,
-            'SOURCE': 0.0035,
-            'VIDEOS': 0.00005
-        };
+<!-- LATEST LEAKS TABLE -->
+<section id="leaks" class="section" style="background: rgba(0,0,0,0.3);">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">LATEST UNCOVERED DATA</h2>
+            <div class="section-meta">UPDATED: 2 HOURS AGO</div>
+        </div>
 
-        // --- VIDEO PLAYER LOGIC ---
-        function playVideo(element, fileName) {
-            // Simulating video play by changing text/color
-            const originalBg = element.style.background;
-            element.style.background = "#000";
-            element.innerHTML = `<div style="color:var(--purple-light); font-size: 24px;">PLAYING: ${fileName}</div>`;
-            
-            // Reset after 3 seconds for demo
-            setTimeout(() => {
-                element.style.background = originalBg;
-                element.innerHTML = `<div style="position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.6); padding:2px 6px; font-size:10px; color:white;">${fileName}</div>`;
-            }, 3000);
-        }
+        <table class="leak-table">
+            <thead>
+                <tr>
+                    <th>FILE PATH</th>
+                    <th>TYPE</th>
+                    <th>SIZE</th>
+                    <th>STATUS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>..\assets\maps\vc_downtown_01.rpf</td>
+                    <td>Map Data</td>
+                    <td>4.2 GB</td>
+                    <td><span class="leak-status status-complete">COMPLETE</span></td>
+                </tr>
+                <tr>
+                    <td>..\physics\vehicle_tuning.dll</td>
+                    <td>Code</td>
+                    <td>120 MB</td>
+                    <td><span class="leak-status status-complete">COMPLETE</span></td>
+                </tr>
+                <tr>
+                    <td>..\actors\lucia\animations\idle.fbx</td>
+                    <td>3D Model</td>
+                    <td>45 MB</td>
+                    <td><span class="leak-status status-partial">NEEDS PATCH</span></td>
+                </tr>
+                <tr>
+                    <td>..\audio\sfx\gunshots\_762mm.wav</td>
+                    <td>Audio</td>
+                    <td>800 MB</td>
+                    <td><span class="leak-status status-complete">COMPLETE</span></td>
+                </tr>
+                <tr>
+                    <td>..\scripts\heist_logic.lua</td>
+                    <td>Script</td>
+                    <td>2 MB</td>
+                    <td><span class="leak-status status-new">NEW LEAK</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
 
-        // --- MODAL LOGIC ---
-        function openPaymentModal(tier, priceUSD) {
-            const modal = document.getElementById('paymentModal');
-            const title = document.getElementById('modalTitle');
-            const wallet = document.getElementById('walletAddress');
-            
-            // Reset view
-            document.getElementById('step1').style.display = 'block';
-            document.getElementById('step2').style.display = 'none';
-            document.getElementById('userEmail').value = '';
-            document.getElementById('orderCode').style.display = 'none';
+<!-- PRICING -->
+<section id="pricing" class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">ACCESS KEYS</h2>
+            <div class="section-meta">SECURE PAYMENT GATEWAY</div>
+        </div>
 
-            title.innerText = `Purchase: ${tier} ($${priceUSD})`;
-            
-            // Generate a "random" wallet address for the demo
-            const chars = "0123456789abcdef";
-            let addr = "0x";
-            for(let i=0; i<40; i++) addr += chars[Math.floor(Math.random() * chars.length)];
-            
-            wallet.innerText = addr;
-            modal.classList.add('active');
-        }
+        <div class="pricing-grid">
+            <!-- Basic -->
+            <div class="pricing-card">
+                <h3>STANDARD LEAK</h3>
+                <div class="price">$15 <span>/ one-time</span></div>
+                <ul class="pricing-features">
+                    <li>Map Screenshots (JPG)</li>
+                    <li>Vehicle List (Text)</li>
+                    <li>Basic Code Snippets</li>
+                    <li>Community Access</li>
+                    <li class="locked">Full Map Download</li>
+                    <li class="locked">Developer API</li>
+                </ul>
+                <a href="#" class="btn" style="width: 100%; border-color: var(--muted);">BUY STANDARD</a>
+            </div>
 
-        function closePaymentModal() {
-            document.getElementById('paymentModal').classList.remove('active');
-        }
+            <!-- Developer / Full Access -->
+            <div class="pricing-card featured">
+                <h3>DEVELOPER // ROOT ACCESS</h3>
+                <div class="price">$55 <span>/ one-time</span></div>
+                <ul class="pricing-features">
+                    <li><strong>FULL MAP DOWNLOAD (145GB)</strong></li>
+                    <li><strong>ALL VEHICLE MODELS (FBX/OBJ)</strong></li>
+                    <li>Complete Asset Stripping</li>
+                    <li>Physics Data Files</li>
+                    <li>Discord Priority Support</li>
+                    <li>Access to Future Patches</li>
+                </ul>
+                <a href="#" class="btn btn-primary" style="width: 100%;">UNLOCK ROOT ACCESS</a>
+            </div>
+        </div>
+        
+        <p style="text-align: center; margin-top: 30px; font-size: 14px; color: var(--muted);">
+            * Developers: With the $55 tier, you have everything needed to build a custom SixM version. The data is 100% complete.
+        </p>
+    </div>
+</section>
 
-        function processPayment() {
-            const email = document.getElementById('userEmail').value;
-            if(!email || !email.includes('@')) {
-                alert("Please enter a valid email address.");
-                return;
-            }
+<!-- FAQ / TRUST -->
+<section id="faq" class="section">
+    <div class="container" style="max-width: 800px;">
+        <div class="section-header">
+            <h2 class="section-title">DEVELOPER DOCS</h2>
+        </div>
+        
+        <div class="grid-2">
+            <div class="card">
+                <h3>What's included in the $55?</h3>
+                <p>You get a download link to the entire 'Raw Data' folder. These are the files exactly as they sit on Rockstar's servers. This includes the entire map (no loading screens needed in custom builds), every single car, and the multiplayer scripts.</p>
+            </div>
+            <div class="card">
+                <h3>Is it the online version?</h3>
+                <p>No, it is a 'Disk' version dump. You can install this locally on your PC and play it as a single-player experience or host your own private server. It bypasses the online DRM.</p>
+            </div>
+            <div class="card">
+                <h3>Will I get updates?</h3>
+                <p>Yes. Since we have access to the 'internal' branches, you'll get free updates for new seasons, events, and patches as we find them. It's a lifetime access to the current build.</p>
+            </div>
+            <div class="card">
+                <h3>How do I use this for modding?</h3>
+                <p>Simply extract the files into your GTA VI mod directory. The file structure is identical to the standard game files, making it plug-and-play for most modding tools.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-            // Simulate network delay
-            const btn = document.querySelector('#step1 button');
-            const originalText = btn.innerText;
-            btn.innerText = "VERIFYING BLOCKCHAIN...";
-            btn.disabled = true;
+<footer>
+    <p>&copy; 2026 INTERNAL ARCHIVE. NOT OFFICIALLY AFFILIATED WITH ROCKSTAR GAMES.</p>
+    <p style="margin-top: 10px; font-family: var(--font-code); color: var(--purple);">
+        NODE_ID: 8849-X // LATENCY: 12ms
+    </p>
+</footer>
 
-            setTimeout(() => {
-                // Generate random 4-digit code
-                const code = Math.floor(1000 + Math.random() * 9000);
-                
-                // Update UI
-                document.getElementById('orderCode').innerText = code;
-                document.getElementById('orderCode').style.display = 'block';
-                document.getElementById('step1').style.display = 'none';
-                document.getElementById('step2').style.display = 'block';
-                
-                btn.innerText = originalText;
-                btn.disabled = false;
-            }, 1500);
-        }
-    </script>
-</body>
+</body> 
 </html>
